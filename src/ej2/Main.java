@@ -25,8 +25,49 @@ public class Main {
 			switch(opcion) {
 			case 1:
 				System.out.println(articulos);
+				System.out.println();
 				break;
 			case 2:
+				System.out.print("Introduce nombre del artículo a dar de alta: ");
+				nombre = scanner.nextLine();
+				System.out.print("Introduce su precio: ");
+				precio = scanner.nextDouble();
+				scanner.nextLine();
+				if(articulos.altaArticulo(new Articulo(nombre, precio))) 
+					System.out.println("%s con precio %.2f€ ha sido registrado exitosamente.");
+				else System.out.println("No se ha podido dar de alta el artículo.");
+				System.out.println();
+				break;
+			case 3:
+				System.out.print("Introduce nombre del artículo a dar de baja: ");
+				nombre = scanner.nextLine();
+				if(articulos.bajaArticulo(nombre))
+					System.out.println("El producto se ha dado de baja exitosamente.");
+				else System.out.println("No se ha podido dar de baja el artículo");
+				System.out.println();
+				break;
+			case 4:
+				System.out.print("Introduce nombre del artículo cuyo precio deseas modificar: ");
+				nombre = scanner.nextLine();
+				if(!articulos.existeArticulo(nombre)) {
+					System.out.println("El artículo indicado no existe.\n");
+					break;
+				}
+				System.out.print("Introduce nuevo precio: ");
+				precio = scanner.nextDouble();
+				scanner.nextLine();
+				if(articulos.modificarArticulo(nombre, precio))
+					System.out.println("El artículo se ha modificado correctamente.");
+				else System.out.println("El artículo no se ha podido modificar.");
+				System.out.println();
+				break;
+			case 5:
+				System.out.print("Introduce nombre de la mercancía: ");
+				nombre = scanner.nextLine();
+				if(!articulos.existeArticulo(nombre)) {
+					System.out.println("El artículo indicado no existe.\n");
+					break;
+				}
 				
 			}
 			
@@ -49,5 +90,6 @@ public class Main {
 		System.out.println("7. Salir");
 		System.out.println();
 	}
+	
 
 }

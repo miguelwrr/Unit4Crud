@@ -18,6 +18,10 @@ class Articulo {
 		this(nombre, 0, 0);
 	}
 	
+	Articulo(String nombre, double precio){
+		this(nombre, precio, 0);
+	}
+	
 	//Getters y Setters
 	void setNombre(String nombre) {
 		nombre = nombre.trim();
